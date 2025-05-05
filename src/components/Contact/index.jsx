@@ -55,6 +55,7 @@ export default function index() {
         </div>
 
         <BezierCurve />
+
         <div className={styles.info}>
           <div>
             <span>
