@@ -7,6 +7,8 @@ import gsap from "gsap";
 import Image from "next/image";
 import Rounded from "../../common/RoundedButton";
 import projects from "@/data/projects";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const scaleAnimation = {
   initial: { scale: 0, x: "-50%", y: "-50%" },
@@ -25,6 +27,11 @@ const scaleAnimation = {
 };
 
 export default function Home() {
+  const router = useRouter(); // ✅ Initialize router
+
+  const handleMoreWorkClick = () => {
+    router.push("/projects");
+  };
   const [modal, setModal] = useState({ active: false, index: 0 });
   const { active, index } = modal;
   const modalContainer = useRef(null);
@@ -101,9 +108,11 @@ export default function Home() {
           );
         })}
       </div>
-      <Rounded>
-        <p>More work</p>
-      </Rounded>
+      <div onClick={handleMoreWorkClick} className="no-underline">
+        <Rounded>
+          <p className="no-underline">More work</p>
+        </Rounded>
+      </div>
       <>
         <motion.div
           ref={modalContainer}
